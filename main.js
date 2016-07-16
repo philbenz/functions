@@ -16,6 +16,7 @@ console.log('///////////');
 
 /* Define a function called isEqual that takes two arguments and returns a boolean. Return true if the two arguments are equal and return false if they are not.  */
 
+console.log("//// Is Equal ////");
 function isEqual(arg1, arg2){
 
   if(arg1===arg2) {
@@ -37,7 +38,7 @@ console.log("//// Discount Percentage ////");
 
 function discountPercentage(originalAmount, percentOff) {
 
-  //ensure only 99% can be taken off - this is for simplicity.
+  //UPDATE: ensure only 99% can be taken off - this is for simplicity.
   var trimmedPercent = percentOff.toFixed(2);
 
   if(percentOff<=0 || trimmedPercent>.99){
@@ -59,6 +60,7 @@ console.log("//////STRING CAPITALIZE///////");
 function stringCapitalize(new_word) {
     return new_word.charAt(0).toUpperCase() + new_word.slice(1);
 }
+//UPDATE:  I added this function to both reuse what i had put in earlier and to adjust strings into arrays.
 
 function separateText(new_string) {
   var array = new_string.split(' ');
@@ -86,14 +88,15 @@ function getRandomInteger_zero_100() {
 
 function evenNumbers(arbitrary_integer) {
    console.log("Random Integer: "+ arbitrary_integer);
-   var sum = 0;
+   var end = "complete";
    // for the change, I set 'i' to the arbitrary integer
-   for(i=arbitrary_integer; i<arbitrary_integer+1; i++){
+   for(i=0; i<arbitrary_integer+1; i++){
       if(i%2===0){
+        //UPDATE: changed to print the even numbers rather than code.
         console.log(i);
       }
    }
-  return sum;
+  return end;
 }
 
 console.log("Sum is: " + evenNumbers(getRandomInteger_zero_100()));
