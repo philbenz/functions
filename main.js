@@ -3,9 +3,9 @@ console.log('sanity check!');
 
 // Define a function called sum that takes two numbers as
 //  arguments and returns their sum.
-
+console.log("//// Print Sum ////");
 function sum(num1, num2) {
-  return num1, num2;
+  return num1 + num2;
 }
 
 var resultSum = sum(1,2);
@@ -31,11 +31,16 @@ console.log(isEqual(1, 2));
 console.log(isEqual(1, '1'));
 console.log(isEqual('one', 'One'));
 
-/*Define a function called discountPercentage that returns the total discount ($), given the original amount and discount percentage (as arguments). Return a warning if the discount amount is greater than 100 or less that 0 percent.*/
+/*Define a function called discountPercentage that returns the total discount ($), given the original amount and discount percentage (as arguments). Return a warning if the discount amount is greater than 100 or less than 0 percent.*/
+
+console.log("//// Discount Percentage ////");
 
 function discountPercentage(originalAmount, percentOff) {
 
-  if(percentOff<0 || percentOff>.99){
+  //ensure only 99% can be taken off - this is for simplicity.
+  var trimmedPercent = percentOff.toFixed(2);
+
+  if(percentOff<=0 || trimmedPercent>.99){
     console.log("Warning - program stopped")
   } else {
     return(originalAmount*percentOff);
@@ -49,15 +54,29 @@ console.log(discountPercentage(100, -.1));
 console.log(discountPercentage(100, .50));
 
 console.log("//////STRING CAPITALIZE///////");
+
 //to be honest, I really struggled here on capitalizing.  I ended up some smelly for loops so I googled the below to see how that worked.  I'm trying to think more like 'this' kind of programming than verbose looping.  Truly difficult.
 function stringCapitalize(new_word) {
     return new_word.charAt(0).toUpperCase() + new_word.slice(1);
 }
 
-console.log("1: " + stringCapitalize("first"));
-console.log(stringCapitalize("here's text"));
-console.log(stringCapitalize("three letter acronym"));
-console.log(stringCapitalize(" space before word"));
+function separateText(new_string) {
+  var array = new_string.split(' ');
+  var new_Cap = "";
+  var new_String = new Array ();
+
+  for(var i = 0; i < array.length; i++) {
+    new_Cap = stringCapitalize(array[i]);
+    new_String.push(new_Cap);
+  }
+    return new_String.join(" ");
+}
+
+
+console.log("1: " + separateText("first"));
+console.log(separateText("here is text"));
+console.log(separateText("three letter acronym"));
+console.log(separateText(" space before word"));
 
 console.log("////////evenNumbers////////")
 //Created function to help with #5 and #7
@@ -68,10 +87,10 @@ function getRandomInteger_zero_100() {
 function evenNumbers(arbitrary_integer) {
    console.log("Random Integer: "+ arbitrary_integer);
    var sum = 0;
-
-   for(i=0; i<arbitrary_integer+1; i++){
+   // for the change, I set 'i' to the arbitrary integer
+   for(i=arbitrary_integer; i<arbitrary_integer+1; i++){
       if(i%2===0){
-        sum = sum + i;
+        console.log(i);
       }
    }
   return sum;
@@ -99,7 +118,7 @@ function isOdd(number){
    return number%2;
 }
 
-
+//confused as '0' is neither odd nor even
 function oddNumber(randomInteger) {
   console.log("Random integer is " + randomInteger);
   if(randomInteger>=40) {
